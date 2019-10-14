@@ -2,14 +2,10 @@ package lca;
 
 public class lca {
 
-	public static void main(String[] args) {
-				
-	}
+	public static Node root = null;
 	
-	Node root;			// Starting Node in tree
-
 	/* Auxiliary Node Class will store values and keep reference to each child */
-	class Node{
+	public static class Node{
 		int data;
 		Node left,right;		//Left and Right Child
 		
@@ -46,18 +42,37 @@ public class lca {
 	}
 	
 	/* createBinaryTree() - Used to create Binary Tree to run tests on */
-	public lca createBinaryTree(){
-		lca binarytree = new lca();
+	public void createBinaryTree(){
+		
+		root = new Node(6);
+		Node node4 = new Node(4);
+		Node node8 = new Node(8);
+		Node node3 = new Node(3);
+		Node node5 = new Node(5);
+		Node node7 = new Node(7);
+		Node node9 = new Node(9);
 
-		binarytree.add(6);			//			    6	
-		binarytree.add(4);			//			 _______
-		binarytree.add(8);			//			/		\
-		binarytree.add(3);			//		   4         8
-		binarytree.add(5);			//		  / \       / \
-		binarytree.add(7);			//		 3   5     7   9
-		binarytree.add(9);
+		root.left = node4;
+		root.right = node8;
+		
+		node4.left = node3;
+		node4.right = node5;
+		node8.left = node7;
+		node8.right = node9;
+		
+		/*			    6	
+					 _______
+					/		\
+				   4         8
+				  / \       / \
+				 3   5     7   9		*/
+		
 
-		return binarytree;
+	}
+	
+	public Node createEmptyList() {
+		root = null;
+		return root;
 	}
 
 	/* containsNodeRecursive() - Recursively checks if tree contains specified value */
